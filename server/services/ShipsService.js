@@ -1,7 +1,6 @@
 import { dbContext } from '../db/DbContext'
 import { BadRequest, Forbidden } from '../utils/Errors'
 
-// TODO Write the Service
 class ShipsService {
   async getAll(query = {}) {
     return await dbContext.Ships.find(query)
@@ -16,7 +15,7 @@ class ShipsService {
   }
 
   async create(body) {
-    return dbContext.Ships.create(body)
+    return await dbContext.Ships.create(body)
   }
 
   async remove(shipId, userId) {

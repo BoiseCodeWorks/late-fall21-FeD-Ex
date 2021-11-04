@@ -12,7 +12,7 @@ export class ShipsController extends BaseController {
       .get('/:id', this.getById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
-      .delete('', this.remove)
+      .delete('/:id', this.remove)
   }
 
   async getAll(req, res, next) {
@@ -41,6 +41,7 @@ export class ShipsController extends BaseController {
       req.body.creatorId = req.userInfo.id
       req.body.captain = Cat.getName()
       const ship = await shipsService.create(req.body)
+      res.send(ship)
     } catch (error) {
       logger.log(error)
       next(error)
