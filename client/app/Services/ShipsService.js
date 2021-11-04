@@ -18,6 +18,13 @@ class ShipsService {
     }
     ProxyState.activeShip = found
   }
+
+  async createShip(newShip) {
+    const res = await api.post('api/ships', newShip)
+    const ship = new Ship(res.data)
+    ProxyState.ships = [...ProxyState.ships, ship]
+    ProxyState.activeShip = ship
+  }
 }
 
 export const shipsService = new ShipsService()

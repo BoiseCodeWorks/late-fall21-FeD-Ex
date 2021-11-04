@@ -47,7 +47,21 @@ export class ShipsController {
     bootstrap.Modal.getOrCreateInstance('#form-modal').show()
   }
 
-  createShip() {
+  async createShip() {
     window.event.preventDefault()
+    try {
+      /** @type {HTMLFormElement} */
+      // @ts-ignore
+      const form = window.event.target
+      const newShip = {
+        name: form.shipName.value
+      }
+      await shipsService.createShip(newShip)
+      form.reset()
+    } catch (error) {
+      logger.log('[createShip]', error.message)
+    } finally {
+      bootstrap.Modal.getOrCreateInstance('#form-modal').hide()
+    }
   }
 }
