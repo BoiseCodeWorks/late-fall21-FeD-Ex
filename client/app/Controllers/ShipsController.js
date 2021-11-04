@@ -1,4 +1,5 @@
 import { ProxyState } from '../AppState.js'
+import { getShipForm } from '../Forms/Ship.js'
 import { shipsService } from '../Services/ShipsService.js'
 import { logger } from '../Utils/Logger.js'
 
@@ -37,5 +38,16 @@ export class ShipsController {
     } catch (error) {
       logger.error('[setActive]', error)
     }
+  }
+
+  openShipModal() {
+    bootstrap.Offcanvas.getOrCreateInstance('#ships-list').hide()
+    document.getElementById('modal-title-slot').innerText = 'New Ship'
+    document.getElementById('modal-body-slot').innerHTML = getShipForm()
+    bootstrap.Modal.getOrCreateInstance('#form-modal').show()
+  }
+
+  createShip() {
+    window.event.preventDefault()
   }
 }

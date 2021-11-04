@@ -39,8 +39,11 @@
       <i class="mdi mdi-rocket"></i>
     </button>
     <div class="container-fluid">
-      <div class="row my-3">
-        <div id="ship-data" class="col-12 text-center">
+      <div class="row my-3 justify-content-center">
+        <div id="ship-data" class="col-6 text-center">
+        </div>
+        <div class="col-8">
+          <h5>Manifest</h5>
         </div>
       </div>
     </div>
@@ -51,10 +54,26 @@
       <h5>Package Management Dashboard</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body">
-      <p class="selectable p-2 text-danger">Unassigned Packages</p>
-      <h5>Ships</h5>
-      <div class="p-1" id="ships">
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div>
+        <p class="selectable p-2 text-danger">Unassigned Packages</p>
+        <h5>Ships</h5>
+        <div class="p-1" id="ships">
+        </div>
+      </div>
+      <button class="btn btn-outline-success" onclick="app.shipsController.openShipModal()"><i
+          class="mdi mdi-plus"></i></button>
+    </div>
+  </div>
+  <!-- SECTION Modal -->
+  <div class="modal fade" id="form-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title-slot">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="modal-body-slot"> Body </div>
       </div>
     </div>
   </div>
