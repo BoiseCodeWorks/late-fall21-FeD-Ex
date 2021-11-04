@@ -8,7 +8,15 @@ export const PackageSchema = new Schema(
     address: { type: String, required: true },
     priority: { type: String, enum: ['BASIC', 'FIRST-CLASS', 'EXPRESS'], uppercase: true, default: 'BASIC' },
     weight: { type: Number, min: -10, max: 10000 },
-    delivered: { type: Boolean, default: false }
+    delivered: { type: Boolean, default: false },
+    shipId: { type: Schema.Types.ObjectId, ref: 'Ships' }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
+
+PackageSchema.virtual('ship', {
+  localField: 'shipId',
+  foreignField: '_id',
+  ref: 'Ships',
+  justOne: true
+})
