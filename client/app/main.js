@@ -1,9 +1,9 @@
 import { AuthController } from './Controllers/AuthController.js'
-import { ValuesController } from './Controllers/ValuesController.js'
+import { ShipsController } from './Controllers/ShipsController.js'
 
 class App {
-  authController = new AuthController();
-  valuesController = new ValuesController();
+  authController = new AuthController()
+  shipsController = new ShipsController()
 }
 
 // @ts-ignore

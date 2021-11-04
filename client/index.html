@@ -34,16 +34,19 @@
     </nav>
   </header>
   <main id="app">
-    <button class="btn btn-primary m-2 type=" button" data-bs-toggle="offcanvas" data-bs-target="#ships">
+    <button class="btn btn-primary m-2 position-absolute z-2" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#ships-list">
       <i class="mdi mdi-rocket"></i>
     </button>
     <div class="container-fluid">
       <div class="row my-3">
+        <div id="ship-data" class="col-12 text-center">
+        </div>
       </div>
     </div>
   </main>
   <!-- SECTION Off-Canvas -->
-  <div class="offcanvas offcanvas-start" tabindex="-1" id="ships" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="ships-list" aria-labelledby="offcanvasRightLabel">
     <div class="offcanvas-header">
       <h5>Package Management Dashboard</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
