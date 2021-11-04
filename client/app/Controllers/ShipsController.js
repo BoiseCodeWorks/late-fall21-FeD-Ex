@@ -1,5 +1,6 @@
 import { ProxyState } from '../AppState.js'
 import { getShipForm } from '../Forms/Ship.js'
+import { packagesService } from '../Services/PackagesService.js'
 import { shipsService } from '../Services/ShipsService.js'
 import { logger } from '../Utils/Logger.js'
 
@@ -31,9 +32,10 @@ export class ShipsController {
     }
   }
 
-  setActive(id) {
+  async setActive(id) {
     try {
       shipsService.setActive(id)
+      await packagesService.getPackages('?shipId=' + id)
       bootstrap.Offcanvas.getOrCreateInstance('#ships-list').hide()
     } catch (error) {
       logger.error('[setActive]', error)

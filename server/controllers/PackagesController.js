@@ -3,12 +3,14 @@ import BaseController from '../utils/BaseController'
 import { logger } from '../utils/Logger'
 
 // TODO Write the Controller
+
 export class PackagesController extends BaseController {
   constructor() {
     super('api/packages')
     this.router
       .post('', this.create)
       .get('', this.getAll)
+      .get('/unassigned', this.getUnassigned)
       .put('/:id', this.edit)
       .delete('/:id', this.deliver)
   }
@@ -27,6 +29,15 @@ export class PackagesController extends BaseController {
       const query = req.query
       logger.log('your query sir', query)
       const packages = await packagesService.getAll(query)
+      return res.send(packages)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getUnassigned(req, res, next) {
+    try {
+      const packages = await packagesService.getAll({ shipId: null })
       return res.send(packages)
     } catch (error) {
       next(error)
