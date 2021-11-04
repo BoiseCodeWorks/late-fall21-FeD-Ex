@@ -1,3 +1,4 @@
+import { packagesService } from '../services/PackagesService'
 import BaseController from '../utils/BaseController'
 
 // TODO Write the Controller
@@ -9,6 +10,11 @@ export class PackagesController extends BaseController {
   }
 
   async create(req, res, next) {
-    throw new Error('Method not implemented.')
+    try {
+      const newPackage = await packagesService.create(req.body)
+      return res.send(newPackage)
+    } catch (error) {
+      next(error)
+    }
   }
 }
