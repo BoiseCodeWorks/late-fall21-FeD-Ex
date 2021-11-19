@@ -18,5 +18,10 @@ class PackagesService {
     // const packages = await dbContext.Packages.find(query).populate('ship', 'captain name').limit(5).skip((page - 1) * 5)
     // return { results: packages, page, totalPages }
   }
+
+  async edit(id, update) {
+    const updatedPackage = await dbContext.Packages.findByIdAndUpdate(id, update, { new: true })
+    return updatedPackage
+  }
 }
 export const packagesService = new PackagesService()
